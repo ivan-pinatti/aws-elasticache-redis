@@ -70,8 +70,8 @@ variable "cluster_attributes" {
     auto_minor_version_upgrade      = bool
     auth_token_enabled              = bool
     snapshot_retention_limit        = number
-    snapshot_window                 = string
-    maintenance_window              = string
+    snapshot_window                 = optional(string, null)
+    maintenance_window              = optional(string, null)
   })
   description = "Cluster attributes"
 }

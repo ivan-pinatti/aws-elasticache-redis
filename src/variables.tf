@@ -120,14 +120,14 @@ variable "snapshot_retention_limit" {
 
 variable "snapshot_window" {
   type        = string
-  description = "The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot. Format: hh:mm-hh:mm."
-  default     = "06:00-07:00"
+  description = "The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot. Format: hh:mm-hh:mm. Defaults to null (AWS chooses the window)."
+  default     = null
 }
 
 variable "maintenance_window" {
   type        = string
-  description = "Maintenance window. Format: ddd:hh:mm-ddd:hh:mm (UTC)."
-  default     = "tue:08:00-tue:09:00"
+  description = "Maintenance window. Format: ddd:hh:mm-ddd:hh:mm (UTC). Defaults to null (AWS chooses the window)."
+  default     = null
 }
 
 variable "vpc_component_name" {
