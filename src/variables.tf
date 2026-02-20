@@ -135,3 +135,21 @@ variable "dns_delegated_component_name" {
   description = "The name of the Delegated DNS component"
   default     = "dns-delegated"
 }
+
+variable "slow_logs_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable slow logs delivery to CloudWatch Logs"
+}
+
+variable "engine_logs_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable engine logs delivery to CloudWatch Logs"
+}
+
+variable "log_retention_days" {
+  type        = number
+  default     = 7
+  description = "CloudWatch Log Group retention in days for Redis logs"
+}

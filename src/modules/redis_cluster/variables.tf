@@ -80,6 +80,7 @@ variable "parameters" {
     value = string
   }))
   description = "Parameters to configure cluster parameter group"
+  default     = []
 }
 
 variable "parameter_group_name" {
@@ -92,4 +93,22 @@ variable "kms_alias_name_ssm" {
   type        = string
   default     = "alias/aws/ssm"
   description = "KMS alias name for SSM"
+}
+
+variable "slow_logs_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable slow logs delivery to CloudWatch Logs"
+}
+
+variable "engine_logs_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable engine logs delivery to CloudWatch Logs"
+}
+
+variable "log_retention_days" {
+  type        = number
+  default     = 7
+  description = "CloudWatch Log Group retention in days"
 }

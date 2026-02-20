@@ -6,6 +6,21 @@ locals {
   ssm_path_auth_token = local.auth_token_enabled ? format("/%s/%s/%s", "elasticache-redis", var.cluster_name, "auth_token") : null
 
   auth_token = local.auth_token_enabled ? one(random_password.auth_token[*].result) : null
+
+  log_delivery_configuration = concat(
+    var.slow_logs_enabled ? [{
+      destination      = aws_cloudwatch_log_group.slow_log[0].name
+      destination_type = "cloudwatch-logs"
+      log_format       = "json"
+      log_type         = "slow-log"
+    }] : [],
+    var.engine_logs_enabled ? [{
+      destination      = aws_cloudwatch_log_group.engine_log[0].name
+      destination_type = "cloudwatch-logs"
+      log_format       = "json"
+      log_type         = "engine-log"
+    }] : []
+  )
 }
 
 module "redis" {
@@ -36,6 +51,7 @@ module "redis" {
   create_parameter_group               = var.create_parameter_group
   parameter                            = var.parameters
   parameter_group_name                 = var.parameter_group_name
+  log_delivery_configuration           = local.log_delivery_configuration
   port                                 = var.cluster_attributes.port
   subnets                              = var.cluster_attributes.subnets
   transit_encryption_enabled           = var.cluster_attributes.transit_encryption_enabled
@@ -45,6 +61,20 @@ module "redis" {
   zone_id                              = var.cluster_attributes.zone_id
 
   context = module.this.context
+}
+
+resource "aws_cloudwatch_log_group" "slow_log" {
+  count             = local.enabled && var.slow_logs_enabled ? 1 : 0
+  name              = "/aws/elasticache/${var.cluster_name}/slow-log"
+  retention_in_days = var.log_retention_days
+  tags              = module.this.tags
+}
+
+resource "aws_cloudwatch_log_group" "engine_log" {
+  count             = local.enabled && var.engine_logs_enabled ? 1 : 0
+  name              = "/aws/elasticache/${var.cluster_name}/engine-log"
+  retention_in_days = var.log_retention_days
+  tags              = module.this.tags
 }
 
 # https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html

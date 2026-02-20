@@ -74,8 +74,11 @@ module "redis_clusters" {
   engine                 = lookup(each.value, "engine", "redis")
   engine_version         = each.value.engine_version
   create_parameter_group = lookup(each.value, "create_parameter_group", true)
-  parameters             = lookup(each.value, "parameters", null)
+  parameters             = lookup(each.value, "parameters", [])
   parameter_group_name   = lookup(each.value, "parameter_group_name", null)
+  slow_logs_enabled      = lookup(each.value, "slow_logs_enabled", var.slow_logs_enabled)
+  engine_logs_enabled    = lookup(each.value, "engine_logs_enabled", var.engine_logs_enabled)
+  log_retention_days     = lookup(each.value, "log_retention_days", var.log_retention_days)
   cluster_attributes     = local.cluster_attributes
 
   context = module.this.context
