@@ -118,6 +118,18 @@ variable "snapshot_retention_limit" {
   default     = 0
 }
 
+variable "snapshot_window" {
+  type        = string
+  description = "The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot. Format: hh:mm-hh:mm."
+  default     = "06:00-07:00"
+}
+
+variable "maintenance_window" {
+  type        = string
+  description = "Maintenance window. Format: ddd:hh:mm-ddd:hh:mm (UTC)."
+  default     = "tue:08:00-tue:09:00"
+}
+
 variable "vpc_component_name" {
   type        = string
   description = "The name of a VPC component"

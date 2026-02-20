@@ -2,6 +2,7 @@
 
 
 
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 <!-- markdownlint-disable -->
 ## Requirements
@@ -37,7 +38,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_additional_tag_map"></a> [additional\_tag\_map](#input\_additional\_tag\_map) | Additional key-value pairs to add to each map in `tags_as_list_of_maps`. Not added to `tags` or `id`.<br/>This is for some rare cases where resources want additional configuration of tags<br/>and therefore take a list of maps with tag key, value, and additional configuration. | `map(string)` | `{}` | no |
 | <a name="input_attributes"></a> [attributes](#input\_attributes) | ID element. Additional attributes (e.g. `workers` or `cluster`) to add to `id`,<br/>in the order they appear in the list. New attributes are appended to the<br/>end of the list. The elements of the list are joined by the `delimiter`<br/>and treated as a single ID element. | `list(string)` | `[]` | no |
-| <a name="input_cluster_attributes"></a> [cluster\_attributes](#input\_cluster\_attributes) | Cluster attributes | <pre>object({<br/>    availability_zones              = list(string)<br/>    vpc_id                          = string<br/>    additional_security_group_rules = list(any)<br/>    allowed_security_groups         = list(string)<br/>    allow_all_egress                = bool<br/>    subnets                         = list(string)<br/>    family                          = string<br/>    port                            = number<br/>    zone_id                         = string<br/>    multi_az_enabled                = bool<br/>    at_rest_encryption_enabled      = bool<br/>    transit_encryption_enabled      = bool<br/>    transit_encryption_mode         = string<br/>    apply_immediately               = bool<br/>    automatic_failover_enabled      = bool<br/>    auto_minor_version_upgrade      = bool<br/>    auth_token_enabled              = bool<br/>    snapshot_retention_limit        = number<br/>  })</pre> | n/a | yes |
+| <a name="input_cluster_attributes"></a> [cluster\_attributes](#input\_cluster\_attributes) | Cluster attributes | <pre>object({<br/>    availability_zones              = list(string)<br/>    vpc_id                          = string<br/>    additional_security_group_rules = list(any)<br/>    allowed_security_groups         = list(string)<br/>    allow_all_egress                = bool<br/>    subnets                         = list(string)<br/>    family                          = string<br/>    port                            = number<br/>    zone_id                         = string<br/>    multi_az_enabled                = bool<br/>    at_rest_encryption_enabled      = bool<br/>    transit_encryption_enabled      = bool<br/>    transit_encryption_mode         = string<br/>    apply_immediately               = bool<br/>    automatic_failover_enabled      = bool<br/>    auto_minor_version_upgrade      = bool<br/>    auth_token_enabled              = bool<br/>    snapshot_retention_limit        = number<br/>    snapshot_window                 = string<br/>    maintenance_window              = string<br/>  })</pre> | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Elasticache Cluster name | `string` | n/a | yes |
 | <a name="input_context"></a> [context](#input\_context) | Single object for setting entire context at once.<br/>See description of individual variables for details.<br/>Leave string and numeric variables as `null` to use default value.<br/>Individual variable settings (non-null) override settings in context object,<br/>except for attributes, tags, and additional\_tag\_map, which are merged. | `any` | <pre>{<br/>  "additional_tag_map": {},<br/>  "attributes": [],<br/>  "delimiter": null,<br/>  "descriptor_formats": {},<br/>  "enabled": true,<br/>  "environment": null,<br/>  "id_length_limit": null,<br/>  "label_key_case": null,<br/>  "label_order": [],<br/>  "label_value_case": null,<br/>  "labels_as_tags": [<br/>    "unset"<br/>  ],<br/>  "name": null,<br/>  "namespace": null,<br/>  "regex_replace_chars": null,<br/>  "stage": null,<br/>  "tags": {},<br/>  "tenant": null<br/>}</pre> | no |
 | <a name="input_create_parameter_group"></a> [create\_parameter\_group](#input\_create\_parameter\_group) | Whether new parameter group should be created. Set to false if you want to use existing parameter group | `bool` | `true` | no |
@@ -60,7 +61,7 @@
 | <a name="input_num_replicas"></a> [num\_replicas](#input\_num\_replicas) | Number of replicas in replica set | `number` | n/a | yes |
 | <a name="input_num_shards"></a> [num\_shards](#input\_num\_shards) | Number of node groups (shards) for this Redis cluster. Value > 0 sets cluster mode to true.  Changing this number will trigger an online resizing operation before other settings modifications | `number` | `0` | no |
 | <a name="input_parameter_group_name"></a> [parameter\_group\_name](#input\_parameter\_group\_name) | Override the default parameter group name | `string` | `null` | no |
-| <a name="input_parameters"></a> [parameters](#input\_parameters) | Parameters to configure cluster parameter group | <pre>list(object({<br/>    name  = string<br/>    value = string<br/>  }))</pre> | n/a | yes |
+| <a name="input_parameters"></a> [parameters](#input\_parameters) | Parameters to configure cluster parameter group | <pre>list(object({<br/>    name  = string<br/>    value = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_regex_replace_chars"></a> [regex\_replace\_chars](#input\_regex\_replace\_chars) | Terraform regular expression (regex) string.<br/>Characters matching the regex will be removed from the ID elements.<br/>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
 | <a name="input_replicas_per_shard"></a> [replicas\_per\_shard](#input\_replicas\_per\_shard) | Number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource | `number` | `0` | no |
 | <a name="input_stage"></a> [stage](#input\_stage) | ID element. Usually used to indicate role, e.g. 'prod', 'staging', 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
@@ -80,6 +81,7 @@
 | <a name="output_transit_encryption_mode"></a> [transit\_encryption\_mode](#output\_transit\_encryption\_mode) | TLS in-transit encryption mode for Redis cluster |
 <!-- markdownlint-restore -->
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 
 
 
