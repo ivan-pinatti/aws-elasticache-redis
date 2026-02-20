@@ -8,13 +8,13 @@ locals {
   auth_token = local.auth_token_enabled ? one(random_password.auth_token[*].result) : null
 
   log_delivery_configuration = concat(
-    var.slow_logs_enabled ? [{
+    local.enabled && var.slow_logs_enabled ? [{
       destination      = aws_cloudwatch_log_group.slow_log[0].name
       destination_type = "cloudwatch-logs"
       log_format       = "json"
       log_type         = "slow-log"
     }] : [],
-    var.engine_logs_enabled ? [{
+    local.enabled && var.engine_logs_enabled ? [{
       destination      = aws_cloudwatch_log_group.engine_log[0].name
       destination_type = "cloudwatch-logs"
       log_format       = "json"
