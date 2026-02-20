@@ -3,6 +3,7 @@
 
 
 
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 <!-- markdownlint-disable -->
 ## Requirements
@@ -10,13 +11,14 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.0 |
 
 ## Modules
@@ -87,6 +89,7 @@
 | <a name="output_transit_encryption_mode"></a> [transit\_encryption\_mode](#output\_transit\_encryption\_mode) | TLS in-transit encryption mode for Redis cluster |
 <!-- markdownlint-restore -->
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 
 
 

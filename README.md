@@ -74,8 +74,8 @@ components:
         automatic_failover_enabled: false
         cloudwatch_metric_alarms_enabled: false
         snapshot_retention_limit: 1
-        slow_logs_enabled: true
-        engine_logs_enabled: true
+        slow_logs_enabled: true     # opt-in example; module default is false
+        engine_logs_enabled: true   # opt-in example; module default is false
         log_retention_days: 7
         redis_clusters:
           redis-main:

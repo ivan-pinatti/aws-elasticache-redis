@@ -51,7 +51,7 @@ module "redis" {
   create_parameter_group               = var.create_parameter_group
   parameter                            = var.parameters
   parameter_group_name                 = var.parameter_group_name
-  log_delivery_configuration           = local.log_delivery_configuration
+  log_delivery_configuration           = [for item in local.log_delivery_configuration : tomap(item)]
   port                                 = var.cluster_attributes.port
   subnets                              = var.cluster_attributes.subnets
   transit_encryption_enabled           = var.cluster_attributes.transit_encryption_enabled
