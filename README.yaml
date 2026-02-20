@@ -29,6 +29,8 @@ usage: |-
           automatic_failover_enabled: false
           cloudwatch_metric_alarms_enabled: false
           snapshot_retention_limit: 1
+          num_shards: 0
+          replicas_per_shard: 0
           redis_clusters:
             redis-main:
               num_replicas: 1
