@@ -74,7 +74,7 @@ module "redis_clusters" {
   engine                 = lookup(each.value, "engine", "redis")
   engine_version         = each.value.engine_version
   create_parameter_group = lookup(each.value, "create_parameter_group", true)
-  parameters             = try(each.value.parameters, null) != null ? each.value.parameters : []
+  parameters             = lookup(each.value, "parameters", [])
   parameter_group_name   = lookup(each.value, "parameter_group_name", null)
   cluster_attributes     = local.cluster_attributes
 
