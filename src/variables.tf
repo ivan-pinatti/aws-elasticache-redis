@@ -15,6 +15,18 @@ variable "multi_az_enabled" {
   description = "Multi AZ (Automatic Failover must also be enabled.  If Cluster Mode is enabled, Multi AZ is on by default, and this setting is ignored)"
 }
 
+variable "num_shards" {
+  type        = number
+  default     = 0
+  description = "Default number of shards (node groups) for Redis clusters. Value > 0 enables cluster mode. Can be overridden per cluster in redis_clusters."
+}
+
+variable "replicas_per_shard" {
+  type        = number
+  default     = 0
+  description = "Default number of replica nodes per shard. Valid values are 0 to 5. Can be overridden per cluster in redis_clusters."
+}
+
 variable "family" {
   type        = string
   description = "Redis family"
